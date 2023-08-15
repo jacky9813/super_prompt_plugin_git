@@ -1,0 +1,49 @@
+[project]
+name = "super_prompt_plugin_git"
+authors = [
+    {name = "Jacky Chen", email = "jacky9813@hotmail.com"}
+]
+description = "Google Cloud SDK plugin for super prompt."
+readme = "README.rst"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Terminals",
+    "Topic :: Utilities"
+]
+dependencies = [
+    "importlib-metadata; python_version<'3.10'",
+    "GitPython >= 3.1.32"
+]
+dynamic = ["version"]
+
+[project.entry-points.'super_prompt.plugins']
+git = "super_prompt_plugin_git.main:main"
+
+# [project.entry-points.'super_prompt.plugin_config']
+# gcloud = "super_prompt_plugin_git.__main__:available_configurations"
+
+[project.optional-dependencies]
+
+
+[build-system]
+requires = ["setuptools >= 65.0", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-dir]
+super_prompt_plugin_git = "super_prompt_plugin_git"
+
+[tool.setuptools.dynamic]
+version = {attr = "super_prompt_plugin_git.VERSION.VERSION"}
