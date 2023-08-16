@@ -3,7 +3,7 @@ name = "super_prompt_plugin_git"
 authors = [
     {name = "Jacky Chen", email = "jacky9813@hotmail.com"}
 ]
-description = "Google Cloud SDK plugin for super prompt."
+description = "Git plugin for super prompt."
 readme = "README.rst"
 requires-python = ">=3.7"
 license = {text = "MIT"}
