@@ -9,7 +9,7 @@ import super_prompt.types
 
 GIT_SYMBOL = "\U0001f709"
 GIT_SYNCED = "\u2713 "
-GIT_COMMIT_NOT_PUSHED = "\u21c5"
+GIT_COMMIT_NOT_PUSHED = "\u21c5 "
 GIT_DIRTY = "*"
 
 logger = logging.getLogger("super_prompt_plugin_git")
@@ -41,7 +41,7 @@ def main(config: dict) -> typing.Optional[super_prompt.types.PluginResponse]:
         return super_prompt.types.PluginResponse(GIT_SYMBOL, branch_name, None)
     
     return super_prompt.types.PluginResponse(
-        (GIT_SYNCED if remote_branch.commit.hexsha == repo.active_branch.commit else GIT_COMMIT_NOT_PUSHED) + GIT_SYMBOL,
+        (GIT_SYNCED if remote_branch.commit.hexsha == repo.active_branch.commit.hexsha else GIT_COMMIT_NOT_PUSHED) + GIT_SYMBOL,
         branch_name,
         None
     )
