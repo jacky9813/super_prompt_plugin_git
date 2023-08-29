@@ -31,7 +31,11 @@ def main(config: dict) -> typing.Optional[super_prompt.types.PluginResponse]:
     if repo is None:
         logger.info("No valid Git repo found")
         return
-    branch_name = repo.active_branch.name
+    try:
+        branch_name = repo.active_branch.name
+    except TypeError:
+        if repo.head.is_detached:
+            return super_prompt.types.PluginResponse(GIT_DIRTY + GIT_SYMBOL, "DETACHED", None)
 
     if repo.is_dirty():
         return super_prompt.types.PluginResponse(GIT_DIRTY + GIT_SYMBOL, branch_name, None)
